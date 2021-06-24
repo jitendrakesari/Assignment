@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:background="@android:color/white"
+    tools:context=".activity.searchscreen.SearchActivity">
+    <include layout="@layout/header"></include>
+
+    <RelativeLayout
+        android:id="@+id/ll_input_con"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/input_shape">
+
+        <AutoCompleteTextView
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="30dp"
+            android:inputType="text"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:hint="@string/search_text"
+            >
+
+        </AutoCompleteTextView>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_search_24px"/>
+
+        <ImageView
+            android:id="@+id/cross_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_close"/>
+        <TextView
+            android:id="@+id/tv_error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/input_border_80"
+            android:lineSpacingExtra="16sp"
+            android:padding="5dp"
+            android:text=""
+            android:textColor="@color/black_theme_text"
+            android:textSize="@dimen/p4"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
+
+
+
+    </RelativeLayout>
+
+    <!--<include layout="@layout/header"></include>-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
+
+        <include
+            layout="@layout/no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></include>
+
+        <ImageView
+            android:id="@+id/wiki_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wiki_image">
+        </ImageView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_gravity="center">
+
+        </ProgressBar>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
