@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface SearchMvpView extends MvpView {
 
-    void afterSearchSuccess(List<WikiPage> wikiPageList,String searchText);
+    void afterSearchSuccess(List<WikiPage> wikiPageList, String searchText);
     void showNoData();
+    void showDataFound();
 }

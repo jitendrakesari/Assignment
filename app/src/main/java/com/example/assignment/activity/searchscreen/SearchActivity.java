@@ -13,18 +13,21 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.assignment.R;
 import com.example.assignment.activity.baseactivity.BaseActivity;
 import com.example.assignment.adapter.SearchAdapter;
 import com.example.assignment.networkutil.ConnectionDetector;
 import com.example.assignment.pojo.WikiPage;
+
 import java.util.List;
 
-public class SearchActivity extends BaseActivity implements  SearchMvpView {
+public class SearchActivity extends BaseActivity implements SearchMvpView {
 
     private AutoCompleteTextView inputField;
     private RecyclerView recyclerView;
@@ -108,7 +111,7 @@ public class SearchActivity extends BaseActivity implements  SearchMvpView {
     private void searchData(){
         String searchText = inputField.getText().toString().trim();
         if (!searchText.equalsIgnoreCase("")) {
-            searchPresenter.hitServerForGettingSearchResult(searchText,SearchActivity.this);
+            searchPresenter.hitServerForGettingSearchResult(searchText, SearchActivity.this);
             recyclerView.setVisibility(View.VISIBLE);
             wikiImage.setVisibility(View.GONE);
         } else {
@@ -135,9 +138,16 @@ public class SearchActivity extends BaseActivity implements  SearchMvpView {
         wikiImage.setVisibility(View.GONE);
     }
 
+    @Override
+    public void showDataFound() {
+        recyclerView.setVisibility(View.VISIBLE);
+        no_data.setVisibility(View.GONE);
+        //wikiImage.setVisibility(View.GONE);
+    }
+
 
     @Override
-    public void afterSearchSuccess(List<WikiPage> listOfWikiPages,String searchText) {
+    public void afterSearchSuccess(List<WikiPage> listOfWikiPages, String searchText) {
         this.listOfWikiPages = listOfWikiPages;
         setRecyclerView(listOfWikiPages, searchText);
         wikiImage.setVisibility(View.GONE);

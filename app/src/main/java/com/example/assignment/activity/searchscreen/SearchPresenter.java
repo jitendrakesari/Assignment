@@ -8,6 +8,7 @@ import com.example.assignment.pojo.Query;
 import com.example.assignment.pojo.Root;
 import com.example.assignment.remote.ApiClient;
 import com.example.assignment.remote.ApiInterface;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,11 +33,14 @@ public class SearchPresenter<V extends SearchMvpView> extends BasePresenter<V>
                         query.getPages();
                         getMvpView().afterSearchSuccess(query.getPages(),searchText);
                         getMvpView().hideLoading();
+                        getMvpView().showDataFound();
                     }else{
                         getMvpView().showNoData();
+                        getMvpView().hideLoading();
                     }
                 }
             }
+
 
             @Override
             public void onFailure(Call<Root> call, Throwable t) {
